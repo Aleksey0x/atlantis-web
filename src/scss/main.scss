@@ -117,3 +117,26 @@ img {
 		margin-right: 20px; // Пример отступа
 	}
 }
+
+.text-white {
+	color: white;
+}
+
+.text-img-wrapper {
+	position: relative;
+	&__text {
+		font-size: 36px;
+		position: absolute;
+		top: 1em;
+		left: 1em;
+	}
+	&__img {
+		filter: brightness(.5);
+	}
+}
+
+
+.top-to-bottom {
+	position: relative; /* или absolute/fixed */
+    overflow: hidden;
+}

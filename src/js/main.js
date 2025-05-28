@@ -19,30 +19,55 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	// Кэшируем селекторы
-	const clipMaskElements = gsap.utils.toArray(".clip-mask-animation");
+	const clipMaskElementsLtR = gsap.utils.toArray(".clip-mask-animation--left-yo-right");
 	const fadeInElements = gsap.utils.toArray('.fadeIn-element');
 	const typingTextElements = gsap.utils.toArray('.animation-printing-text');
 	const bottomToTopElements = gsap.utils.toArray('.bottom-to-top');
+	const clipMaskElementsTtB = gsap.utils.toArray('.top-to-bottom');
 
 	// Создаем timeline для лучшей производительности
 	const tl = gsap.timeline();
 
 	// Анимация clip-mask
-	clipMaskElements.forEach(element => {
+	clipMaskElementsLtR.forEach(element => {
 		tl.fromTo(element,
 			{
 				clipPath: 'inset(0 100% 0 0)',
-				x: 80
+			
 			},
 			{
 				clipPath: 'inset(0 0% 0 0)',
-				x: 0,
+			
 				duration: 1,
 				ease: "power3.out",
 				scrollTrigger: {
 					trigger: element,
 					start: "top bottom",
 					end: "top center",
+					toggleActions: "play none none none",
+					markers: false,
+					scrub: true
+				}
+			}
+		);
+	});
+
+
+	clipMaskElementsTtB.forEach(element => {
+		tl.fromTo(element,
+			{
+				clipPath: 'inset(100% 0 0 0)', // Изменено с 'inset(0 100% 0 0)' на 'inset(100% 0 0 0)'
+				y: 80 // Заменено x на y
+			},
+			{
+				clipPath: 'inset(0% 0 0 0)', // Изменено с 'inset(0 0% 0 0)' на 'inset(0 0 0 0)'
+				y: 0, // Заменено x на y
+				duration: 1,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: element,
+					start: "center bottom",
+					end: "center center",
 					toggleActions: "play none none none",
 					markers: false,
 					scrub: true
