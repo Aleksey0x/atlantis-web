@@ -3,6 +3,8 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import svgLoader from 'vite-svg-loader';
 import createSvgSpritePlugin from 'vite-plugin-svg-sprite';
+import path from 'path';  // Добавляем импорт path
+import fs from 'fs';      // Добавляем импорт fs
 
 export default defineConfig({
 	// Настройки сервера разработки
@@ -62,6 +64,16 @@ export default defineConfig({
 	base: './',
 
 	plugins: [
+		{
+			name: 'clean-dist',
+			buildStart() {
+				const distPath = path.resolve(__dirname, 'dist');
+				if (fs.existsSync(distPath)) {
+					fs.rmSync(distPath, { recursive: true, force: true });
+					console.log('🗑️  Dist folder cleaned');
+				}
+			}
+		},
 		svgLoader(),
 		createSvgSpritePlugin({
 			exportType: 'vanilla', // or 'react' or 'vue'
