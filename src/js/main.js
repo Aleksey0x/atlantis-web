@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	clipMaskElementsTtB.forEach(element => {
 		tl.fromTo(element,
 			{
-				clipPath: 'inset(100% 0 0 0)', // Изменено с 'inset(0 100% 0 0)' на 'inset(100% 0 0 0)'
+				clipPath: 'inset(50% 0 0 0)', // Изменено с 'inset(0 100% 0 0)' на 'inset(100% 0 0 0)'
 				y: 80 // Заменено x на y
 			},
 			{
