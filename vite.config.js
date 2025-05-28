@@ -64,16 +64,16 @@ export default defineConfig({
 	base: './',
 
 	plugins: [
-		{
-			name: 'clean-dist',
-			buildStart() {
-				const distPath = path.resolve(__dirname, 'dist');
-				if (fs.existsSync(distPath)) {
-					fs.rmSync(distPath, { recursive: true, force: true });
-					console.log('🗑️  Dist folder cleaned');
-				}
-			}
-		},
+		// {
+		// 	name: 'clean-dist',
+		// 	buildStart() {
+		// 		const distPath = path.resolve(__dirname, 'dist');
+		// 		if (fs.existsSync(distPath)) {
+		// 			fs.rmSync(distPath, { recursive: true, force: true });
+		// 			console.log('🗑️  Dist folder cleaned');
+		// 		}
+		// 	}
+		// },
 		svgLoader(),
 		createSvgSpritePlugin({
 			exportType: 'vanilla', // or 'react' or 'vue'
